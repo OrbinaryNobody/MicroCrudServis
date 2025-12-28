@@ -1,0 +1,16 @@
+CREATE TABLE course.track_material (
+    track_id UUID NOT NULL
+        REFERENCES course.track(id)
+        ON DELETE CASCADE,
+
+    material_id UUID NOT NULL
+        REFERENCES course.material(id)
+        ON DELETE CASCADE,
+
+    position INT NOT NULL,
+
+    PRIMARY KEY (track_id, material_id),
+
+    CONSTRAINT uq_track_material_position
+        UNIQUE (track_id, position)
+);

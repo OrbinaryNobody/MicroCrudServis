@@ -1,0 +1,28 @@
+@startuml
+entity TrackConstructor {
+  id : UUID
+  name : text
+}
+
+entity Track {
+  id : UUID
+  title : text
+  full_text : text
+}
+
+entity Material {
+  id : UUID
+  title : text
+  type : varchar
+}
+
+entity TrackMaterial {
+  track_id : UUID
+  material_id : UUID
+  position : int
+}
+
+TrackConstructor ||--o{ Track
+Track ||--o{ TrackMaterial
+Material ||--o{ TrackMaterial
+@enduml
